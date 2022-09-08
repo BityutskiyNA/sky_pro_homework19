@@ -48,10 +48,10 @@ class UserService:
         return {"error": "Неверные учётные данные"}, 401
 
 
-    def auth_by_refresh_token(self, data ):
+    def auth_by_refresh_token(self, data):
         refresh_token = data.get("refresh_token")
         try:
-            token = jwt.decode(refresh_token, SECRET_HERE, algorithm=ALGO)
+            token = jwt.decode(refresh_token, SECRET_HERE, algorithms=ALGO)
         except Exception as e:
             print("JWT Decode Exception", e)
             abort(401)
